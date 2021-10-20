@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# React-intro-component-with-signup-form
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Live website -()
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [The challenge](#the-challenge)
+- [Screenshot](#screenshot)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
 
-### `npm start`
+### The challenge
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Users should be able to:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- View the optimal layout for the site depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Receive an error message when the `form` is submitted if:
+  - The `input` field is empty
+  - The email address is not formatted correctly
 
-### `npm test`
+## My process
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `npm run build`
+### End Result
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![result](https://user-images.githubusercontent.com/85038929/126002233-1ca03e52-19a3-4ae2-a50a-4f2081fb736e.JPG)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Active image
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![active](https://user-images.githubusercontent.com/85038929/126002262-2736b782-427b-41f2-badd-d582eaa1fb35.JPG)
 
-### `npm run eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Semantic HTML5 markup
+- CSS custom properties
+- CSS Grid
+- JavaScript
+- React.JS
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What I learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I learned how to setup my forms in this project. I set up all of my styles in my parent element which was the form tag. This allowed me to easily change the class and add styles to my project. These are a few examples taken from my code to show how I managed to display styles after hitting the submit button.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```HTML
+<form class="form" id="form">
 
-## Learn More
+        <div class="form-control">
+          <input type="text" placeholder="First Name" id="firstname">
+          <i class="fas fa-check-circle fa-lg"></i>
+          <i class="fas fa-exclamation-circle fa-lg"></i>
+          <small>Error message</small>
+        </div>
+        <!-- .... -->
+</form>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```Javascript
+function setErrorFor(input, message) {
+    const formControl = input.parentElement;
+    //.form-control
+    const small = formControl.querySelector('small');
 
-### Code Splitting
+    //add error message inside small
+    small.innerText = message;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    //add error class
+    formControl.className = 'form-control error';
+}
+```
 
-### Analyzing the Bundle Size
+```CSS
+.form-control.success i.fa-check-circle {
+	color: var(--green);
+	visibility: visible;
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Questions
 
-### Making a Progressive Web App
+- What are some ways that I can make my code look cleaner?
+- How can I improve my layout?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Useful resources
 
-### Advanced Configuration
+- [Build a Responsive Grid CSS Website Layout From Scratch](https://www.youtube.com/watch?v=moBhzSC455o&ab_channel=TraversyMedia) - This helped me understand how to use grids and flexbox to organize my website. I also learned about some new vs code extentions such as prettier which helped make my code look neat and organised.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [JavaScript Client-slide Form Validation](https://www.youtube.com/watch?v=rsd4FNGTRBw&ab_channel=FlorinPop) - this tutorial helped my understand how to format forms in my project and how to implement javascript so that the users can receive a message back
 
-### Deployment
+- [Debugging JavaScript in Visual Studio Code and Google Chrome](https://www.youtube.com/watch?v=AX7uybwukkk&ab_channel=JamesQQuick) - this video taught me how to debug my javascript using the debugger tool in developer tools
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Author
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Website - [Carlos Perez](https://carlospwd.netlify.app/)
+- Frontend Mentor - [@Carlos-A-P](https://www.frontendmentor.io/profile/Carlos-A-P)
+- Twitter - [@WDCarlosP](https://www.twitter.com/WDCarlosP)
