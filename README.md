@@ -1,6 +1,6 @@
 # React-intro-component-with-signup-form
 
-- Live website -()
+- Live website -(https://intro-component-with-signup-form-react.netlify.app/)
 
 ## Table of contents
 
@@ -41,43 +41,84 @@ Users should be able to:
 - CSS Grid
 - JavaScript
 - React.JS
+- React hooks
 
 ### What I learned
 
-I learned how to setup my forms in this project. I set up all of my styles in my parent element which was the form tag. This allowed me to easily change the class and add styles to my project. These are a few examples taken from my code to show how I managed to display styles after hitting the submit button.
+This is my first React project. I learned a lot about hooks and components; I still need to work/learn more about structure but I'm excited to learn more about ES6 and react features!
 
-```HTML
-<form class="form" id="form">
+- This is my form component where I used react hooks and components to pass on if my form has any errors or not. Once submitted, the page refreshes. I used array destructuring to pass variables to other components.
 
-        <div class="form-control">
-          <input type="text" placeholder="First Name" id="firstname">
-          <i class="fas fa-check-circle fa-lg"></i>
-          <i class="fas fa-exclamation-circle fa-lg"></i>
-          <small>Error message</small>
+```JavaScript
+const FormSignup = ({submitForm}) => {
+    // destructure the values from useForm
+    const {handleChange, values, handleSubmit, errors} = useForm(
+        submitForm,
+        validateInfo
+        );
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    function submitForm() {
+        setIsSubmitted(true)
+        setTimeout(function(){ window.location.reload(); }, 1000);
+    }
+    return (
+        <div className="form-content-right">
+            {/* ${(!isSubmitted)? '': console.log('success')} */}
+            <form className={`form ${(!isSubmitted)? '': 'success'}`} onSubmit={handleSubmit}>
+                {/* ${errors.firstname && 'error'} */}
+                <div className={`form-control  ${(errors.firstname)? 'error': ''}`}>
+                    <input
+                    type="text"
+                    name="firstname"
+                    className="form-input"
+                    placeholder="First Name"
+                    value={values.firstname}
+                    onChange={handleChange}/>
+                <i className="fas fa-check-circle fa-lg"></i>
+                <i className="fas fa-exclamation-circle fa-lg"></i>
+                {errors.firstname && <small>{errors.firstname}</small>}
+                </div>
+                <div className={`form-control  ${(errors.lastname)? 'error': ''}`}>
+                    <input
+                    type="text"
+                    name="lastname"
+                    className="form-input"
+                    placeholder="Last Name"
+                    value={values.lastname}
+                    onChange={handleChange}/>
+                <i className="fas fa-check-circle fa-lg"></i>
+                <i className="fas fa-exclamation-circle fa-lg"></i>
+                {errors.lastname && <small>{errors.lastname}</small>}
+                </div>
+                <div className={`form-control  ${(errors.email)? 'error': ''}`}>
+                    <input
+                    type="text"
+                    name="email"
+                    className="form-input"
+                    placeholder="Email Address"
+                    value={values.email}
+                    onChange={handleChange}/>
+                <i className="fas fa-check-circle fa-lg"></i>
+                <i className="fas fa-exclamation-circle fa-lg"></i>
+                {errors.email && <small>{errors.email}</small>}
+                </div>
+                <div className={`form-control  ${(errors.password)? 'error': ''}`}>
+                    <input
+                    type="password"
+                    name="password"
+                    className="form-input"
+                    placeholder="Password"
+                    value={values.password}
+                    onChange={handleChange}/>
+                <i className="fas fa-check-circle fa-lg"></i>
+                <i className="fas fa-exclamation-circle fa-lg"></i>
+                {errors.password && <small>{errors.password}</small>}
+                </div>
+                <button className="btn" type="submit">Claim your free trial</button>
+                <p className="disclosure">By clicking the button, you are agreeing to our <a href="https://carlospwd.netlify.app/" className="disText">Terms and Services</a> </p>
+            </form>
         </div>
-        <!-- .... -->
-</form>
-
-```
-
-```Javascript
-function setErrorFor(input, message) {
-    const formControl = input.parentElement;
-    //.form-control
-    const small = formControl.querySelector('small');
-
-    //add error message inside small
-    small.innerText = message;
-
-    //add error class
-    formControl.className = 'form-control error';
-}
-```
-
-```CSS
-.form-control.success i.fa-check-circle {
-	color: var(--green);
-	visibility: visible;
+    )
 }
 ```
 
@@ -88,9 +129,7 @@ function setErrorFor(input, message) {
 
 ### Useful resources
 
-- [Build a Responsive Grid CSS Website Layout From Scratch](https://www.youtube.com/watch?v=moBhzSC455o&ab_channel=TraversyMedia) - This helped me understand how to use grids and flexbox to organize my website. I also learned about some new vs code extentions such as prettier which helped make my code look neat and organised.
-
-- [JavaScript Client-slide Form Validation](https://www.youtube.com/watch?v=rsd4FNGTRBw&ab_channel=FlorinPop) - this tutorial helped my understand how to format forms in my project and how to implement javascript so that the users can receive a message back
+- [React Form Validation Using Custom Hooks Tutorial - Beginner React JS Project](https://www.youtube.com/watch?v=KGFG-yQD7Dw) - this tutorial helped my understand how to format forms in my project and how to implement jsx so that the users can receive a message back
 
 - [Debugging JavaScript in Visual Studio Code and Google Chrome](https://www.youtube.com/watch?v=AX7uybwukkk&ab_channel=JamesQQuick) - this video taught me how to debug my javascript using the debugger tool in developer tools
 
