@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 
 // custom hook
-const useForm = (validateInfo) => {
+const useForm = (callback, validateInfo) => {
     // first is values and second is function to update our state
     const[values, setValues] = useState({
         firstname: '',
@@ -28,6 +28,14 @@ const useForm = (validateInfo) => {
         setErrors(validateInfo(values));
         setIsSubmitting(true);
     }
+    
+    // check when errors updates and if there are any left
+    useEffect(() => {
+        if(Object.keys(errors).length === 0 && isSubmitting) {
+            callback();
+        }
+    }, [errors])
+
     return {handleChange, values, handleSubmit, errors}
 }
 

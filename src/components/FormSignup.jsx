@@ -1,7 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import useForm from './useForm'
 import validateInfo from './validateInfo'
-import FormSuccess from './FormSuccess'
 
 const FormSignup = ({submitForm}) => {
     // destructure the values from useForm
@@ -9,9 +8,15 @@ const FormSignup = ({submitForm}) => {
         submitForm,
         validateInfo
         );
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    function submitForm() {
+        setIsSubmitted(true)
+        setTimeout(function(){ window.location.reload(); }, 1000);
+    }
     return (
         <div className="form-content-right">
-            <form className="form" onSubmit={handleSubmit}>
+            {/* ${(!isSubmitted)? '': console.log('success')} */}
+            <form className={`form ${(!isSubmitted)? '': 'success'}`} onSubmit={handleSubmit}>
                 {/* ${errors.firstname && 'error'} */}
                 <div className={`form-control  ${(errors.firstname)? 'error': ''}`}>
                     <input 

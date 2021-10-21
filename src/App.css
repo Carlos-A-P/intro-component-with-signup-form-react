@@ -92,7 +92,7 @@ span.topInfo {
 	visibility: hidden;
 }
 
-.form-control.success i.fa-check-circle {
+.form.success i.fa-check-circle {
 	color: var(--green);
 	visibility: visible;
 }
@@ -113,7 +113,7 @@ span.topInfo {
 }
 
 /* changed with javascript */
-.form-control.success input {
+.form.success input {
 	border-color: var(--green);
 	border-width: medium;
 }

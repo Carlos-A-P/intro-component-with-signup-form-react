@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React from 'react'
 import FormSignup from './FormSignup'
 
 export default function Form() {
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    function submitForm() {
-        setIsSubmitted(true)
-    }
+    // const [isSubmitted, setIsSubmitted] = useState(false);
+    // function submitForm() {
+    //     setIsSubmitted(true)
+    // }
     return (
         <div className="main">
             <div className="wrap">
